@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './WidgetCounter.module.css';
 
 const WidgetCounter = () => {
 	const [count, setCount] = React.useState(0);
@@ -9,7 +10,7 @@ const WidgetCounter = () => {
 
 	return (
 		<div>
-			<div>WidgetCounter: {count}</div>
+			<div className={styles.counter}>WidgetCounter: {count}</div>
 			<button onClick={increment}>increment</button>
 		</div>
 
