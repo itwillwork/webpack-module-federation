@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
   entry: "./src/index.js",
@@ -10,6 +11,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
+    }),
+    new ModuleFederationPlugin({
+      name: "Host",
+      remotes: {
+        'widget_a': 'widget_a@http://localhost:8082/widget-a-build.js',
+      },
     }),
   ],
   module: {

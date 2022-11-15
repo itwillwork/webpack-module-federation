@@ -1,5 +1,7 @@
+const { dependencies } = require("./package.json");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
   entry: "./src/index.js",
@@ -10,6 +12,28 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
+    }),
+    new ModuleFederationPlugin({
+      name: 'widget_a',
+      // library: {
+      //   type: 'var',
+      //   name: 'widget_a'
+      // },
+      filename: 'widget-a-build.js',
+      exposes: {
+        "./Widget": './src/Widget.jsx'
+      },
+      shared: {
+        // ...dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: dependencies["react"],
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-dom"],
+        },
+      },
     }),
   ],
   module: {
