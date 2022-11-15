@@ -1,0 +1,9 @@
+# common
+.idea
+.DS_Store
+node_modules
+npm-debug.log
+
+# webpack build output
+dist
+build
