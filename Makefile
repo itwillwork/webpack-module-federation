@@ -6,10 +6,9 @@ install:
 	cd host && npm i
 dev-widet:
 	cd widget && npm run start
+serve-widet:
+	cd widget && npm run build && npm run serve
 dev-host:
-	(cd widget && npm run build && npm run serve) &
 	cd host && npm run start
-serve-all:
-	(cd widget && npm run build && npm run serve) &
-	(cd host && npm run build  && npm run serve) &
-	open http://localhost:8083/
+serve-host:
+	cd host && npm run build  && npm run serve
