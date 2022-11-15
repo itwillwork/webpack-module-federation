@@ -1,3 +1,5 @@
+### Как запустить?
+
 Установить зависимостей:
 ```
 make install
@@ -41,3 +43,13 @@ P.S.
 make clear
 ```
 
+### Как работает?
+
+1. Собираем виджет:
+https://github.com/itwillwork/webpack-module-federation/blob/main/widget/webpack.config.js#L23-L40
+
+2. Импортируем виджет в сборку хоста:
+https://github.com/itwillwork/webpack-module-federation/blob/main/host/webpack.config.js#L23-L38
+
+3. Используем виджет в хосте:
+https://github.com/itwillwork/webpack-module-federation/blob/main/host/src/App.jsx#L2
