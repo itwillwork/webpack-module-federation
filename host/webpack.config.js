@@ -21,13 +21,11 @@ module.exports = (env, argv) => {
         template: path.join(__dirname, "public", "index.html"),
       }),
       new ModuleFederationPlugin({
-        name: 'widget_a',
-        filename: 'widget-a-build.js',
-        exposes: {
-          "./Widget": './src/Widget.jsx'
+        name: "host",
+        remotes: {
+          'widget_a': 'widget_a@http://localhost:8082/widget-a-build.js',
         },
         shared: {
-          // ...dependencies,
           react: {
             singleton: true,
             requiredVersion: dependencies["react"],
