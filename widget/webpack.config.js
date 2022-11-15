@@ -15,10 +15,6 @@ module.exports = {
     }),
     new ModuleFederationPlugin({
       name: 'widget_a',
-      // library: {
-      //   type: 'var',
-      //   name: 'widget_a'
-      // },
       filename: 'widget-a-build.js',
       exposes: {
         "./Widget": './src/Widget.jsx'

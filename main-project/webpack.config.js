@@ -1,3 +1,4 @@
+const { dependencies } = require("./package.json");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
@@ -13,9 +14,19 @@ module.exports = {
       template: path.join(__dirname, "public", "index.html"),
     }),
     new ModuleFederationPlugin({
-      name: "Host",
+      name: "host",
       remotes: {
         'widget_a': 'widget_a@http://localhost:8082/widget-a-build.js',
+      },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: dependencies["react"],
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-dom"],
+        },
       },
     }),
   ],
