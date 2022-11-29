@@ -36,6 +36,10 @@ module.exports = (env, argv) => {
             singleton: true,
             requiredVersion: dependencies["react-dom"],
           },
+          "react-router-dom": {
+             singleton: true,
+              requiredVersion: dependencies["react-router-dom"],
+          }
         },
       }),
     ],
