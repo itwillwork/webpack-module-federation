@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf build && webpack --mode production",
-    "start": "open http://localhost:3000/ && webpack serve --mode development",
+    "start": "open http://localhost:3000/widget && webpack serve --mode development",
     "serve": "serve build -p 8082",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +27,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3",
     "serve": "^14.1.1"
   }
 }
